@@ -7,19 +7,20 @@ public class GameTracker
 
         System.out.println("Game Menu(●'◡'●)");
         System.out.println("---------");
-        System.out.println("    1. Add game");
-        System.out.println("    2. List games");
-        System.out.println("    3. Delete game");
-        System.out.println("    4. Play game");
-        System.out.println("    5. Search game");
-        System.out.println("    6. Exit");
+        System.out.println("     1. Add game");
+        System.out.println("     2. List games");
+        System.out.println("     3. Delete game");
+        System.out.println("     4. Play game");
+        System.out.println("     5. Search game");
+        System.out.println("     6. Exit");
         System.out.print("====>>>>╰(*°▽°*)╯ Please enter your choice(Do not input the number which is not the six numbers otherwise the choices will appear again): ");
     }
     public static void main(String[] args)
     {
+        System.out.println("GameTracker Project(the progamme is used to record times and kinds of the games which we have played)");
         GameList gameList = new GameList();
         Scanner it = new Scanner(System.in);
-        int choice;
+        int c;//"c"means choice
 
         while (true)
         {
@@ -29,45 +30,51 @@ public class GameTracker
                 System.out.println("Wrong input. Please enter a correct number in order to restore it.");
                 it.next();
             }
-            choice = it.nextInt();
+            c = it.nextInt();
 
 
 
-            switch (choice)
+            switch (c)
             {
                 case 1:
-                    System.out.print("Enter game name: ");
-                    String name = it.next();
-                    System.out.print("Enter times played: ");
+                    System.out.println("Enter game name: ");
+                    String n = it.next();
 
-                    while (!it.hasNextInt()) {
-                        System.out.println("Invalid input. Please enter a number.");
+                    System.out.println("Enter times played: ");
+
+                    while (!it.hasNextInt())
+                    {
+                        System.out.println("Wrong input. Please enter a number.");
                         it.next();
                     }
 
-                    int timesPlayed = it.nextInt();
-                    gameList.addGame(name, timesPlayed);
+                    int t= Integer.parseInt(it.nextLine());
+                    gameList.addGame(n, t);//"n"means name of the play and "t"means times played
+
+                    System.out.println("Adding successfully");
+
                     break;
                 case 2:
                     gameList.listGames();
                     break;
                 case 3:
-                    System.out.print("Enter game name to delete: ");
+                    System.out.println("Enter game name to delete: ");
                     String deleteName = it.next();
                     gameList.deleteGame(deleteName);
                     break;
                 case 4:
                     System.out.println("Enter game name to play: ");
-                    String playName = it.next();
-                    Game game = gameList.searchGame(playName);
-                    if (game != null) {
-                        game.playGame();
+                    String Name = it.next();
+                    Game g = gameList.searchGame(Name);//"g"means game
+                    if (g != null)
+                    {
+                        g.playGame();
                     } else {
                         System.out.println("Game not found");
                     }
                     break;
                 case 5:
-                    System.out.print("Enter game name to search: ");
+                    System.out.println("Enter game name to search: ");
                     String searchName = it.next();
                     Game foundGame = gameList.searchGame(searchName);
                     if (foundGame != null) {
@@ -83,7 +90,7 @@ public class GameTracker
                     System.out.println("Wrong choice NOT FOUND 404,please choose again😊");
             }
 
-            if (choice == 6)
+            if (c == 6)
             {
                 break;
             }
@@ -92,38 +99,47 @@ public class GameTracker
 }
 
 
-class Game {
+class Game
+{
     private String name;
     private int timesPlayed;
 
-    public Game(String name, int timesPlayed) {
+    public Game(String name, int timesPlayed)
+    {
         this.name = name;
         this.timesPlayed = timesPlayed;
     }
 
-    public String getName() {
+    public String getName()
+    {
+
         return name;
     }
 
-    public int getTimesPlayed() {
+    public int getTimesPlayed()
+    {
         return timesPlayed;
     }
 
-    public void playGame() {
+    public void playGame()
+    {
         timesPlayed++;
     }
 }
 
-class GameList {
+class GameList
+{
     private Game[] games;
     private int numGames;
 
-    public GameList() {
+    public GameList()
+    {
         games = new Game[100];
         numGames = 0;
     }
 
-    public void addGame(String name, int timesPlayed) {
+    public void addGame(String name, int timesPlayed)
+    {
         Game newGame = new Game(name, timesPlayed);
         games[numGames] = newGame;
         numGames=numGames+1;
@@ -139,8 +155,10 @@ class GameList {
     public void deleteGame(String name)
     {
         for (int i = 0; i < numGames; i++) {
-            if (games[i].getName().equalsIgnoreCase(name)) {
-                for (int j = i; j < numGames - 1; j++) {
+            if (games[i].getName().equalsIgnoreCase(name))
+            {
+                for (int j = i; j < numGames - 1; j++)
+                {
                     games[j] = games[j + 1];
                 }
                 numGames=numGames-1;
