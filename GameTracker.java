@@ -4,11 +4,7 @@
 
         System.out.println("Game Menu(●'◡'●)");
         System.out.println("---------");
-        System.out.println("     1. Add game");
-        System.out.println("     2. List games");
-        System.out.println("     3. Delete game");
-        System.out.println("     4. Play game");
-        System.out.println("     5. Search game");
+        System.orch game");
         System.out.println("     6. Exit");
         System.out.print("====>>>>╰(*°▽°*)╯ Please enter your choice(Do not input the number which is not the six numbers otherwise the choices will appear again): ");
     }
