@@ -1,13 +1,23 @@
+import java.util.Scanner;
 
+public class GameTracker
+{
     public static void ShowMenu()
     {
 
         System.out.println("Game Menu(●'◡'●)");
         System.out.println("---------");
-        System.orch game");
+        System.out.println("     1. Add game");
+        System.out.println("     2. List games");
+        System.out.println("     3. Delete game");
+        System.out.println("     4. Play game");
+        System.out.println("     5. Search game");
         System.out.println("     6. Exit");
         System.out.print("====>>>>╰(*°▽°*)╯ Please enter your choice(Do not input the number which is not the six numbers otherwise the choices will appear again): ");
     }
+
+    
+
     public static void main(String[] args)
     {
         System.out.println("GameTracker Project(the progamme is used to record times and kinds of the games which we have played)");
@@ -41,7 +51,7 @@
                         it.next();
                     }
 
-                    int t= Integer.parseInt(it.nextLine());
+                    int t= it.nextInt();
                     gameList.addGame(n, t);//"n"means name of the play and "t"means times played
 
                     System.out.println("Adding successfully");
@@ -49,6 +59,7 @@
                     break;
                 case 2:
                     gameList.listGames();
+
                     break;
                 case 3:
                     System.out.println("Enter game name to delete: ");
@@ -139,11 +150,17 @@ class GameList
     }
 
     public void listGames()
-    {
-        for (int i = 0; i < numGames; i=i+1) {
+    { if (numGames == 0) {
+        System.out.println("No games available in the list.");
+    }
+    else {
+        for (int i = 0; i < numGames; i++) {
             System.out.println(games[i].getName() + " - " + games[i].getTimesPlayed() + " times played");
         }
     }
+    }
+
+
 
     public void deleteGame(String name)
     {
@@ -160,12 +177,9 @@ class GameList
         }
     }
 
-    public Game searchGame(String name)
-    {
-        for (int i = 0; i < numGames; i++)
-        {
-            if (games[i].getName().toLowerCase().contains(name.toLowerCase()))
-            {
+    public Game searchGame(String name) {
+        for (int i = 0; i < numGames; i++) {
+            if (games[i].getName().toLowerCase().contains(name.toLowerCase())) {
                 return games[i];
             }
         }
