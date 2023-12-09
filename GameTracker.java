@@ -1,7 +1,4 @@
-import java.util.Scanner;
-import java.util.Array;
-public class GameTracker
-{
+
     public static void ShowMenu()
     {
 
