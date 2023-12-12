@@ -22,18 +22,16 @@ public class GameTracker
         GameList gameList = new GameList();
         Scanner it = new Scanner(System.in);
         int c;//"c"means choice
-        it.nextLine();
+        it.nextLine();//use enter to open the menu
         while (true)//use the procedure , you can always see the menu, the menu will exist all the time unless you exit by yourself
         {
             ShowMenu();
-
             while (!it.hasNextInt())
             {// I am sorry David, the code is which I learn from the Internet, and this is used to return if the choice is not an integer,it can confirm if you choose the right one
                 System.out.println("Wrong input. Please enter the correct number.");
                 it.next();
             }
             c = it.nextInt();//get the number which you input from the scanner
-
             switch (c)//use switch to choose the case you want
             {
                 case 1:
