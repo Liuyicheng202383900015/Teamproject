@@ -8,7 +8,7 @@ public class GameTracker
         System.out.println("     1. Add game");
         System.out.println("     2. List games");
         System.out.println("     3. Delete game");
-        System.out.println("     4. Guess times of games");
+        System.out.println("     4. Guess times of games played this month");
         System.out.println("     5. Search game");
         System.out.println("     6. Exit");
         System.out.print(  "     ====>>>>╰(*°▽°*)╯ Please enter your choice(PS:Do not input the number which is not the six numbers otherwise the choices will appear again): ");
