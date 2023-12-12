@@ -1,8 +1,35 @@
+import java.util.Scanner;
+public class GameTracker
+{
+    private static void ShowMenu()
+    {
+        System.out.println("Game Menu(●'◡'●)");
+        System.out.println("---------");
+        System.out.println("     1. Add game");
+        System.out.println("     2. List games");
+        System.out.println("     3. Delete game");
+        System.out.println("     4. Guess times of games");
+        System.out.println("     5. Search game");
+        System.out.println("     6. Exit");
+        System.out.print(  "     ====>>>>╰(*°▽°*)╯ Please enter your choice(PS:Do not input the number which is not the six numbers otherwise the choices will appear again): ");
+    }//construct a showMenu in order to introduce how to chooce it and provide the options
 
-    
+//Then this is the main body
+    public static void main(String[] args)
+    {
+        System.out.println("Welcome to GameTracker Project!!!" );
+        System.out.println("PS :The progamme is used to record times and kinds of the games which we have played)  Please click the enter");
+        GameList gameList = new GameList();
+        Scanner it = new Scanner(System.in);
+        int c;//"c"means choice
+        it.nextLine();
+        while (true)//use the procedure , you can always see the menu, the menu will exist all the time unless you exit by yourself
+        {
+            ShowMenu();
 
-            while (!it.hasNextInt()) {// I am sorry David, the code is which I learn from the Internet, and this is used to return if the choice is not an integer,it can confirm if you choose the right one
-                System.out.println("Wrong input. Please enter a correct number in order to restore it.");
+            while (!it.hasNextInt())
+            {// I am sorry David, the code is which I learn from the Internet, and this is used to return if the choice is not an integer,it can confirm if you choose the right one
+                System.out.println("Wrong input. Please enter the correct number.");
                 it.next();
             }
             c = it.nextInt();//get the number which you input from the scanner
@@ -119,5 +146,3 @@
         }
     }
 }
-
-
