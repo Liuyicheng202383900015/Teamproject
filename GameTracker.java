@@ -1,20 +1,4 @@
-import java.util.Scanner;
-public class GameTracker
-{
-    private static void ShowMenu()
-    {
-        System.out.println("Game Menu(●'◡'●)");
-        System.out.println("---------");
-        System.out.println("     1. Add game");
-        System.out.println("     2. List games");
-        System.out.println("     3. Delete game");
-        System.out.println("     4. Guess times of games");
-        System.out.println("     5. Search game");
-        System.out.println("     6. Exit");
-        System.out.print(  "     ====>>>>╰(*°▽°*)╯ Please enter your choice(PS:Do not input the number which is not the six numbers otherwise the choices will appear again): ");
-    }//construct a showMenu in order to introduce how to chooce it and provide the options
 
-//Then this is the main body
     public static void main(String[] args)
     {
         System.out.println("Welcome to GameTracker Project(the progamme is used to record times and kinds of the games which we have played) Please click the enter");
