@@ -18,7 +18,7 @@ public class GameTracker
     public static void main(String[] args)
     {
         System.out.println("Welcome to GameTracker Project!!!" );
-        System.out.println("PS :The progamme is used to record times and kinds of the games which we have played)  Please click the enter");
+        System.out.println("PS :The progamme is used to record times and kinds of the games which we have played)  Please click the enter  ");
         GameList gameList = new GameList();
         Scanner it = new Scanner(System.in);
         int c;//"c"means choice
