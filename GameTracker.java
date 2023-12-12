@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.Scanner;//use scanner to get the input
 public class GameTracker
 {
     private static void ShowMenu()
