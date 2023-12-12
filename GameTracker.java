@@ -1,14 +1,5 @@
 
-    public static void main(String[] args)
-    {
-        System.out.println("Welcome to GameTracker Project(the progamme is used to record times and kinds of the games which we have played) Please click the enter");
-        GameList gameList = new GameList();
-        Scanner it = new Scanner(System.in);
-        int c;//"c"means choice
-        it.nextLine();
-        while (true)//use the procedure , you can always see the menu, the menu will exist all the time unless you exit by yourself
-        {
-            ShowMenu();
+    
 
             while (!it.hasNextInt()) {// I am sorry David, the code is which I learn from the Internet, and this is used to return if the choice is not an integer,it can confirm if you choose the right one
                 System.out.println("Wrong input. Please enter a correct number in order to restore it.");
