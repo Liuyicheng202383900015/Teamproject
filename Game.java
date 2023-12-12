@@ -2,15 +2,15 @@ class Game//This is the game class
 {
     private String name;
     private int timesPlayed;//wrap some attributes
-
-    public Game(String name, int timesPlayed) {
+    public Game(String name, int timesPlayed) 
+    {
         this.name = name;
         this.timesPlayed = timesPlayed;
     }//set the access location for the 2 attributes
 
-    public String getName() {
+     public String getName() {
         return name;
-    }
+    }//also set the access location
 
     public int getTimesplayed() {
         return timesPlayed;
