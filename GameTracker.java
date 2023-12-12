@@ -37,7 +37,7 @@ public class GameTracker
                 case 1:
                     System.out.println("Enter game name: ");
                     String n = it.next();
-                    System.out.println("Enter times played: ");
+                    System.out.println("Enter times played this month: ");
                     while (!it.hasNextInt()) {
                         System.out.println("Wrong input. Please enter a number.");
                         it.next();//judge whether you input a right number choice
@@ -55,7 +55,7 @@ public class GameTracker
                     gameList.deleteGame(deletingName);//carry out the deletion command
                     break;//finish this cae
                 case 4:
-                    System.out.println("Which game do you want to guess times? ");
+                    System.out.println("Which game do you want to guess times played this month? ");
                     String N = it.next();//use N to store
                     Game g = gameList.searchGamecompletely(N);//"g"means game
                     int m= g.getTimesplayed();//carry out the "getTimesplayed()"command, get the times
@@ -64,7 +64,7 @@ public class GameTracker
                     /*This is a guessing games to guess the times of the game that other teammembers have played
                     use while and if code
                      */
-                    System.out.println("Which times? ");
+                    System.out.println("Which times played this month? ");
                     if (g != null)
                     {while (input!=m){
                         attempt++;
