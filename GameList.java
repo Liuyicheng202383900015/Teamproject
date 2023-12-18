@@ -10,7 +10,7 @@ class GameList {
         numberOfgames = 0;//originate the array
     }
 
-    public void addingGame(String name, int timesPlayed)//set procedure to add games
+    public void addingGame(String name, int timesPlayed)/t procedure to add games
     {
         Game existingGame = searchGamecompletely(name);
         if (existingGame != null) {
@@ -21,13 +21,14 @@ class GameList {
 /*
 the procedure also uses the function of searching
  */
-            if (replacementChoice.equals("Y")) {
+            if (replacementChoice.equalsIgnoreCase("Y")) {
                 existingGame.setTimesPlayed(timesPlayed);
                 System.out.println("Replacing existing game successfully");
                 return;
-            } else {
+            } else if (replacementChoice.equalsIgnoreCase("N")){
                 System.out.println("The game was not replaced, it still exists.");
                 return;
+
             }//replace something or not, it is of great significance
         } else {
             Game newGame = new Game(name, timesPlayed);
@@ -50,16 +51,21 @@ the procedure also uses the function of searching
     }
 
 
-    public void deleteGame(String name) {
+    public Boolean deleteGame(String name) {
+        Boolean clock =false;
         for (int i = 0; i < numberOfgames; i++) {
             if (games[i].getName().equals(name)) {
+                clock=true;
                 for (int j = i; j < numberOfgames - 1; j++) {
                     games[j] = games[j + 1];
                 }
+                games[numberOfgames-1]=null;
                 numberOfgames--;
                 break;
             }//use "for" search for the objective in every location in order to find which I want to delete
         }
+
+        return clock;
     }
 
     public Game searchGamecompletely(String name) {
@@ -78,5 +84,9 @@ the procedure also uses the function of searching
             }
         }
         return null;//use contain rather than match, it is the knowledge I learn from the reference books and the Internet, "contain" can also search the part of the object in the array
+    }
+
+    public int getNumberOfgames() {
+        return numberOfgames;
     }
 }
