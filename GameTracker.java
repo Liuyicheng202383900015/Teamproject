@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class GameTracker
 {
     ScannerPro scannerPro = new ScannerPro();
@@ -23,7 +22,7 @@ public class GameTracker
         String n = scannerPro.getString();
         System.out.println("Enter times played monthly: ");
         while ((times = scannerPro.getInt()) == Integer.MAX_VALUE){
-            System.out.println("Wrong input Please input it again：");
+            System.out.print("Wrong option Please input it again：");
         }
         gameList.addingGame(n, times);//"n" means name of the game and "t" means time played
     }
@@ -32,69 +31,84 @@ public class GameTracker
         gameList.listGames();//list the array you want
     }
 
-    private void deleteGame(){
-    while (true) {
-                   System.out.println("Enter game name to delete: ");//choose the game you want to delete
-                   String deletingName = scannerPro.getString();//scan the game name
-                   gameList.deleteGame(deletingName);//carry out the deletion command
-                  }
+    private void deleteGame() {
+        boolean continueDeleting = true;
+
+        while (continueDeleting) {
+            System.out.println("Enter game name to delete: ");
+            String deletingName = scannerPro.getString();
+            boolean isDeleted = gameList.deleteGame(deletingName);
+
+            if (isDeleted) {
+                System.out.println("Game deleted successfully.");
+            } else {
+                System.out.println("Game not found.");
+            }
+            if (gameList.getNumberOfgames() == 0) {
+                System.out.println("No more games to delete. Let us return to menu.");
+                break;
+            }
+            else {
+                System.out.println("Do you want to continue deleting games? (Y/N)");
+            }
+            String choice = scannerPro.getString();
+            if (!choice.equalsIgnoreCase("Y")) {
+                continueDeleting = false;
+            }
+        }
     }
 
-    private void guessTimes(){
-        System.out.println("Which game do you want to guess times? ");
-        String N = scannerPro.getString();//use N to store
-        Game g = gameList.searchGamecompletely(N);//"g"means game
-        int m= g.getTimesplayed();//carry out the "getTimesplayed()"command, get the times
-        int input=0;//originate the value of input
-        int attempt=0;//originate the value of attempt
+    private void guessTimes() {
+
+            System.out.println("Which game do you want to guess times? ");
+            Game g ;//"g"means game
+            while ((g=gameList.searchGamecompletely(scannerPro.getString()))==null){
+                System.out.println("Game NOT FOUND 404");
+                System.out.print("Please input the correct name: ");
+            }
+                int m = g.getTimesplayed();//carry out the "getTimesplayed()"command, get the times
+                int input = 0;//originate the value of input
+                int attempt = 0;//originate the value of attempt
                     /*This is a guessing games to guess the times of the game that other teammembers have played
                     use while and if code
                      */
-        System.out.println("Which times? ");
-        if (g != null)
-        {while (input!=m){
-            attempt++;
-            ScannerPro h=new ScannerPro();
-            input= h.getInt();
-            if (input > m) {
-                System.out.println("too large, try again");
-            }
-            else if (input < m)
-            {
-                System.out.println("too small try again");
-            }
-            else
-            {
-                System.out.println("Good job, well done");
-                break;
-            }
-            if (attempt>=10){
-                System.out.println("Sorry, your attempts are over 10 times, game over");
-                break;
-            }
-        }
-            System.out.println("Your final times number is "+attempt);
+                System.out.println("Which times? ");
+                while (input != m) {
+                    attempt++;
+                    ScannerPro h = new ScannerPro();
+                    input = h.getInt();
+                    if (input > m) {
+                        System.out.println("too large, try again");
+                    } else if (input < m) {
+                        System.out.println("too small try again");
+                    } else {
+                        System.out.println("Good job, well done");
+                        break;
+                    }
+                    if (attempt >= 10) {
+                        System.out.println("Sorry, your attempts are over 10 times, game over");
+                        break;
+                    }
+                }
+                System.out.println("Your final times number is " + attempt);
 
-        } else
-        {
-            System.out.println("Game not found 404");//if there are not games , output this sentence
-        }
-    }
+            }
+
 
     private void searchGame() {
         /*
                     Before you search somethhing ,there are 2 modes now,completely or partly(blurrily),
                     you can choose one mode to search something
                      */
+        System.out.println("Which mode do you want to use(completely or partly) C/P ?  ");
         while (true) {
-            System.out.println("Which mode do you want to use(completely or partly) C/P ?  ");
 
             ScannerPro that = new ScannerPro();
             String opt = that.getString();
 
             ScannerPro it = new ScannerPro();
 
-            if (opt.equals("C")) //judge if what you choose is Completely
+            if (opt.equalsIgnoreCase("C")) //judge if what you choose is Completely
             {
                 System.out.println("Enter game name to search: ");
                 String searchName = scannerPro.getString();
@@ -106,7 +120,7 @@ public class GameTracker
                     System.out.println("Game NOT FOUND 404");
                     break;
                 }
-            } else if (opt.equals("P")) //judge if what you choose is Paarly
+            } else if (opt.equalsIgnoreCase("P")) //judge if what you choose is Paarly
             {
                 System.out.println("Entre the part of the game name to search: ");
                 String searchPartname = scannerPro.getString();
@@ -119,7 +133,7 @@ public class GameTracker
                     break;
                 }
             } else {
-                System.out.println("Please choose the correct option");
+                System.out.print("Please choose the correct option: ");
             }
         }
     }
@@ -133,12 +147,8 @@ public class GameTracker
         while (true)//use the procedure , you can always see the menu, the menu will exist all the time unless you exit by yourself
         {
             ShowMenu();
-
-            while ((number1 = scannerPro.getInt()) == Integer.MAX_VALUE){
-                System.out.print("Wrong input Please input it again：");
-            }
             //get the number which you input from the scanner
-
+            number1=scannerPro.getInt();
             switch (number1)//use switch to choose the case you want
             {
                 case 1:
@@ -178,3 +188,5 @@ public class GameTracker
         gameTracker.run();
     }
 }
+
+
