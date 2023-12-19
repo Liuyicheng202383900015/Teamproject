@@ -19,11 +19,14 @@ public class GameTracker
     }//construct a showMenu in order to introduce how to chooce it and provide the options
 
     private void addGame(){
-        Random random = new Random();
-        int randomNumber = random.nextInt(101);//use random to generate a number which is between 0 and 100 (【0，101）
+        int times;
         System.out.println("Enter game name: ");
-        String n = scannerPro.getString();
-        gameList.addingGame(n, randomNumber);//"n" means name of the game and "t" means time played
+        String n = scannerPro.getString();//get the name of game
+        System.out.println("Enter times played monthly: ");
+        while ((times = scannerPro.getInt()) == Integer.MAX_VALUE){
+            System.out.print("Wrong option Please input it again：");//to determine if you input the wright number
+        }
+        gameList.addingGame(n, times);//"n" means name of the game and "t" means time played
     }
 
     private void listGame(){
@@ -49,7 +52,7 @@ public class GameTracker
             }
             else {
                 System.out.println("Do you want to continue deleting games? (Y/N)");
-            }//determine if you want to continue 
+            }//determine if you want to continue
             String choice = scannerPro.getString();
             if (!choice.equalsIgnoreCase("Y")) {
                 continueDeleting = false;
@@ -58,28 +61,27 @@ public class GameTracker
     }
 
     private void guessTimes() {
-
-        System.out.println("Which game do you want to guess times? ");
-        Game g ;//"g"means game
-        while ((g=gameList.searchGamecompletely(scannerPro.getString()))==null){
-            System.out.println("Game NOT FOUND 404");
-            System.out.print("Please input the correct name: ");
-        }
-        int m = g.getTimesplayed();//carry out the "getTimesplayed()"command, get the times
+        int u;//define the "u"
+        Random random = new Random();//use random
+        System.out.println("What is number of upper limit? ");
+        while (( u=scannerPro.getInt()) == Integer.MAX_VALUE){
+            System.out.print("Wrong input Please input it again：");
+        } //"u"means number upper limit
+        int randomNumber = random.nextInt(u);//use random to generate a number which is between 0 and 100 (【0，u）
         int input = 0;//originate the value of input
         int attempt = 0;//originate the value of attempt
                     /*This is a guessing games to guess the times of the game that other teammembers have played
                     use while and if code
                      */
-        System.out.println("Which times? ");
-        while (input != m)
+        System.out.print("Your guessing number: ");
+        while (input != randomNumber)
         {
             attempt++;
             ScannerPro h = new ScannerPro();
             input = h.getInt();
-            if (input > m) {
+            if (input > randomNumber) {
                 System.out.println("too large, try again");
-            } else if (input < m) {
+            } else if (input < randomNumber) {
                 System.out.println("too small try again");
             } else {
                 System.out.println("Good job, well done");
@@ -91,7 +93,6 @@ public class GameTracker
             }
         }
         System.out.println("Your final times number is " + attempt);
-
     }
 
 
@@ -135,7 +136,7 @@ public class GameTracker
         String gameName;
         Game findingGame;
         while (true){
-            System.out.print("Enter game name to search[N](if you choose N/n it will end at last): ");//determine if you want to end search 
+            System.out.print("Enter game name to search[N](if you choose N/n it will end at last): ");//determine if you want to end search
             gameName = scannerPro.getString();
             if (gameName.equalsIgnoreCase("N")) break;
             findingGame = gameList.searchGamepartly(gameName);
@@ -198,5 +199,3 @@ public class GameTracker
         gameTracker.run();//use run to simplify the “main” way, it may be more simple
     }
 }
-
-
