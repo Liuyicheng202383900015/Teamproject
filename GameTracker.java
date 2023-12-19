@@ -120,7 +120,7 @@ public class GameTracker
         String gameName;
         Game findingGame;
         while (true){
-            System.out.print("Enter game name to search[N]: ");
+            System.out.print("Enter game name to search[N](if you choose N/n it will end at last): ");
             gameName = scannerPro.getString();
             if (gameName.equalsIgnoreCase("N")) break;
             findingGame = gameList.searchGamecompletely(gameName);
